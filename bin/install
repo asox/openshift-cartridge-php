@@ -10,15 +10,15 @@ esac
 
 # Resolve version
 PHP_VERSION=5.6.6
-if [ ! -z "${OPENSHIFT_PHP_VERSION}" ] && [ -d "${OPENSHIFT_PHP_DIR}/usr/php-${OPENSHIFT_PHP_VERSION}" ]; then
+if [ ! -z "${OPENSHIFT_PHP_VERSION}" ] && [ -d "${OPENSHIFT_PHP_DIR}usr/php-${OPENSHIFT_PHP_VERSION}" ]; then
     PHP_VERSION="${OPENSHIFT_PHP_VERSION}"
-elif [ -d "${OPENSHIFT_PHP_DIR}/usr/php-${version}" ]; then
+elif [ -d "${OPENSHIFT_PHP_DIR}usr/php-${version}" ]; then
     PHP_VERSION="${version}"
 fi
-PHP_VERSION_DIR=${OPENSHIFT_PHP_DIR}/usr/php-${PHP_VERSION}
+PHP_VERSION_DIR=${OPENSHIFT_PHP_DIR}usr/php-${PHP_VERSION}
 
 # Install/Update composer
-COMPOSER_PATH=${OPENSHIFT_PHP_DIR}/composer/bin/composer
+COMPOSER_PATH=${OPENSHIFT_PHP_DIR}composer/bin/composer
 if [ -f "${COMPOSER_PATH}" ]; then
     ${COMPOSER_PATH} self-update
 else
@@ -29,7 +29,7 @@ else
 fi
 
 # Install pecl on update
-${OPENSHIFT_PHP_DIR}/bin/control build
+${OPENSHIFT_PHP_DIR}bin/control build
 
 # Result for the client
 client_result ""

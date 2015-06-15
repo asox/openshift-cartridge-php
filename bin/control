@@ -5,7 +5,7 @@ source ${OPENSHIFT_CARTRIDGE_SDK_BASH}
 
 export STOPTIMEOUT=20
 
-PHP_FPM_EXEC=${OPENSHIFT_PHP_VERSION_DIR}sbin/php-fpm
+PHP_FPM_EXEC=${OPENSHIFT_PHP_VERSION_DIR}/sbin/php-fpm
 PHP_FPM_PID=${OPENSHIFT_PHP_DIR}run/php-fpm.pid
 
 function start() {

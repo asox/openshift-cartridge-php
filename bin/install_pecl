@@ -9,7 +9,7 @@ BUILD_DIR="${OPENSHIFT_TMP_DIR}/pecl-build"
 
 # Include utils
 export PATH="${OPENSHIFT_PHP_LIBS_DIR}/bin:${PATH}"
-source "${OPENSHIFT_PHP_DIR}/usr/compile/utils"
+source "${OPENSHIFT_PHP_DIR}usr/compile/utils"
 
 function check_pecl() {
     if [ -z "${1}" ] || [ -z "${2}" ]; then
@@ -62,11 +62,11 @@ function install_pecl() {
     rm -rf ${BUILD_DIR}
 
     # Add extension to the php.ini
-    if ! grep "extension=${1}.so" "${OPENSHIFT_PHP_DIR}/conf/php.ini"; then
-        echo "extension=${1}.so" >> ${OPENSHIFT_PHP_DIR}/conf/php.ini
+    if ! grep "extension=${1}.so" "${OPENSHIFT_PHP_DIR}conf/php.ini"; then
+        echo "extension=${1}.so" >> ${OPENSHIFT_PHP_DIR}conf/php.ini
     fi
-    if ! grep "extension=${1}.so" "${OPENSHIFT_PHP_DIR}/conf/php-fpm.ini"; then
-        echo "extension=${1}.so" >> ${OPENSHIFT_PHP_DIR}/conf/php-fpm.ini
+    if ! grep "extension=${1}.so" "${OPENSHIFT_PHP_DIR}conf/php-fpm.ini"; then
+        echo "extension=${1}.so" >> ${OPENSHIFT_PHP_DIR}conf/php-fpm.ini
     fi
 }
 
