@@ -38,6 +38,7 @@ Now you can customize the php-fpm configuration.
 If you have created `.openshift/action_hooks/build` you can create the `.openshift/php-pecl.txt` to auto install pecl extensions.
 This file must constain have a pecl extension name and version per line for example:
 ```
+imagick 3.3.0RC2
 apcu 4.0.7
 mongo 1.6.5
 ```

@@ -5,14 +5,14 @@ source ${OPENSHIFT_CARTRIDGE_SDK_BASH}
 
 export STOPTIMEOUT=20
 
-PHP_FPM_EXEC=${OPENSHIFT_PHP_VERSION_DIR}/sbin/php-fpm
-PHP_FPM_PID=${OPENSHIFT_PHP_DIR}/run/php-fpm.pid
+PHP_FPM_EXEC=${OPENSHIFT_PHP_VERSION_DIR}sbin/php-fpm
+PHP_FPM_PID=${OPENSHIFT_PHP_DIR}run/php-fpm.pid
 
 function start() {
     # Start php fpm
     ${PHP_FPM_EXEC} \
-        --php-ini "${OPENSHIFT_PHP_DIR}/conf/php-fpm.ini" \
-        --fpm-config "${OPENSHIFT_PHP_DIR}/conf/php-fpm.conf" \
+        --php-ini "${OPENSHIFT_PHP_DIR}conf/php-fpm.ini" \
+        --fpm-config "${OPENSHIFT_PHP_DIR}conf/php-fpm.conf" \
         --prefix "${OPENSHIFT_PHP_DIR}"
 }
 
@@ -58,7 +58,7 @@ function build() {
         CONF_FILE=${OPENSHIFT_REPO_DIR}/.openshift/${file}
 
         if [ -f "${CONF_FILE}" ]; then
-            oo-erb ${CONF_FILE} > ${OPENSHIFT_PHP_DIR}/conf/${CONF_TARGET_FILE}
+            oo-erb ${CONF_FILE} > ${OPENSHIFT_PHP_DIR}conf/${CONF_TARGET_FILE}
         fi
     done
 
@@ -70,7 +70,7 @@ function build() {
         for pecl in $(cat ${PECL_FILE}); do
             if [ ! -z ${pecl} ]; then
                 IFS=' ' read -a pecl_args <<< "${pecl}"
-                ${OPENSHIFT_PHP_DIR}/bin/install_pecl "${pecl_args[0]}" "${pecl_args[1]}" "${pecl_args[2]}"
+                ${OPENSHIFT_PHP_DIR}bin/install_pecl "${pecl_args[0]}" "${pecl_args[1]}" "${pecl_args[2]}"
             fi
         done
         IFS=${OLDIFS}
@@ -84,9 +84,9 @@ function build() {
 }
 
 function tidy() {
-    client_message "Emptying log dir: ${OPENSHIFT_PHP_DIR}/logs"
+    client_message "Emptying log dir: ${OPENSHIFT_PHP_DIR}logs"
     shopt -s dotglob
-    rm -rf "${OPENSHIFT_PHP_DIR}/logs/*"
+    rm -rf "${OPENSHIFT_PHP_DIR}logs/*"
 }
 
 case "$1" in
